@@ -1,10 +1,10 @@
-const fs = require('fs');
+const { ReadStream } = require('fs');
 const path = require('path');
 const { stdout } = require('process');
 
 const textPath = path.join(__dirname, 'text.txt');
-const stream = new fs.ReadStream(textPath);
+const stream = new ReadStream(textPath);
 
-stream.on('data', function (chunk) {
-  stdout.write(chunk.toString());
+stream.on('data', (data) => {
+  stdout.write(data.toString());
 });
